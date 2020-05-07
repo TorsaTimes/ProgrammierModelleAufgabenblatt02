@@ -20,27 +20,25 @@ class Test {
 	private StringReader sr;
 	String s1 = "";
 	String s2 = "Willkommen das ist ein Satz";
+	String s3 = "ä";
 	String filename = "C:\\Users\\SamueleTortomasi\\Dropbox\\Semester4\\Programmiermodelle\\Praktikum\\A2\\read.me";
 	File file =  new File(filename);
 	
-	@org.junit.jupiter.api.Test
-	void test() {
-		
-		String filename = "C:\\Users\\SamueleTortomasi\\Dropbox\\Semester4\\Programmiermodelle\\Praktikum\\A2\\read.me";
-		File file = new File(filename);
-		Reader reader = null; 
-		try {
-			reader = new FileReader(file);
-		}catch(FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		
-		
-		for(String line : lines) {
-			assertSame(lines, lines);
-			assertNotNull(null,lines);
-		}
-	}
+//	@org.junit.jupiter.api.Test
+//	void test() {
+//		
+//		String filename = "C:\\Users\\SamueleTortomasi\\Dropbox\\Semester4\\Programmiermodelle\\Praktikum\\A2\\read.me";
+//		File file = new File(filename);
+//		Reader reader = null; 
+//		try {
+//			reader = new FileReader(file);
+//		}catch(FileNotFoundException e) {
+//			e.printStackTrace();
+//		}
+//		for(String line : lines) {
+//			System.out.println(line);
+//		}
+//	}
 	
 	@org.junit.jupiter.api.Test
 	void testEmpty() {
@@ -65,6 +63,22 @@ class Test {
 		}
 		for(String line : lines) {
 			System.out.println(line);
+		}
+	}
+	
+	@org.junit.jupiter.api.Test
+	void testS3() throws FileNotFoundException {
+		sr =  new StringReader(s3);
+		
+		String filename = "C:\\Users\\SamueleTortomasi\\Dropbox\\Semester4\\Programmiermodelle\\Praktikum\\A2\\read.me";
+		File file = new File(filename);
+		Reader reader = new FileReader(file);
+		
+		LineReader linesDocument = new LineReader(reader);
+		LineReader lines = new LineReader(sr);
+		
+		for(String line : lines) {
+			assertNotEquals(sr, line);
 		}
 	}
 	
